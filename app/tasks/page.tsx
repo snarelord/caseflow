@@ -1,8 +1,27 @@
 import { createClient } from "@/utils/supabase/server";
 
-export default async function Tasks() {
-  const supabase = await createClient();
-  const { data: tasks } = await supabase.from("tasks").select();
-  console.log(tasks);
-  return <pre>{JSON.stringify(tasks, null, 2)}</pre>;
+interface TaskProps {
+  tasks: Array<{ id: number; title: string; description: string | null; status: string; due_date: string }>;
+}
+
+export default function Tasks({ tasks }: TaskProps) {
+  if (!tasks) {
+    return <p>Loading Tasks...</p>;
+  }
+  return (
+    <div>
+      {tasks.length > 0 ? (
+        tasks.map((task) => (
+          <div key={task.id}>
+            <h3>{task.title}</h3>
+            <p>{task.description || "No description provided"}</p>
+            <p>Due date: {new Date(task.due_date).toLocaleString()}</p>
+            <p>Status: {task.status}</p>
+          </div>
+        ))
+      ) : (
+        <p>No tasks found</p>
+      )}
+    </div>
+  );
 }
