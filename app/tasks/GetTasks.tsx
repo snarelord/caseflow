@@ -1,10 +1,12 @@
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/dist/server/api-utils";
+import { revalidatePath } from "next/cache";
 
 interface TaskProps {
   tasks: Array<{ id: number; title: string; description: string | null; status: string; due_date: string }>;
 }
 
-export default function Tasks({ tasks }: TaskProps) {
+export default function GetTasks({ tasks }: TaskProps) {
   if (!tasks) {
     return <p>Loading Tasks...</p>;
   }
