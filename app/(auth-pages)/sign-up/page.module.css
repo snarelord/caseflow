@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  max-width: 28rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 16rem;
+  max-width: 16rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.subtext {
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+.link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.inputGroup :global(input) {
+  margin-bottom: 0.75rem;
+}
