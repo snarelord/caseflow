@@ -1,0 +1,32 @@
+.envWarningWrapper {
+  display: flex;
+  gap: 1rem; /* gap-4 */
+  align-items: center;
+}
+
+.envBadge {
+  font-weight: normal;
+  pointer-events: none;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem; /* gap-2 */
+}
+
+.disabledButton {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.authWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* gap-4 */
+}
+
+.anonActions {
+  display: flex;
+  gap: 0.5rem; /* gap-2 */
+}

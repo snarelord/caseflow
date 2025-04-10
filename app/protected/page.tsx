@@ -24,12 +24,14 @@ export default async function ProtectedPage() {
 
       <div className={styles.section}>
         <h2 className={styles.heading}>Your user details</h2>
-        <pre className={styles.pre}>{JSON.stringify(user, null, 2)}</pre>
+        <p>
+          Email: {user.email} Last sign in: {user.last_sign_in_at}
+        </p>
+        {/* <pre className={styles.pre}>{JSON.stringify(user, null, 2)}</pre> */}
       </div>
 
       <div className={styles.section}>
-        <h2 className={styles.heading}>Next steps</h2>
-        <FetchDataSteps />
+        <h2 className={styles.heading}>Info stuff</h2>
       </div>
     </div>
   );
