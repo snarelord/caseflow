@@ -1,6 +1,6 @@
 import { createClient } from "../utils/supabase/server";
 import { redirect } from "next/navigation";
-import GetTasks from "../../components/GetTasksServer";
+import GetTasks from "../../components/get-tasks/GetTasksServer";
 import { AddTask } from "../tasks/actions";
 import styles from "./page.module.css";
 

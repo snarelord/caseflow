@@ -1,7 +1,5 @@
-import { EnvVarWarning } from "@/components/env-var-warning";
 import HeaderAuth from "../components/header-auth/header-auth";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { hasEnvVars } from "@/app/utils/supabase/check-env-vars";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Link from "next/link";
@@ -37,7 +35,7 @@ export default function RootLayout({
                   <div className={styles.branding}>
                     <Link href="/">Caseflow</Link>
                   </div>
-                  {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
+                  <HeaderAuth />
                 </div>
               </nav>
               <div className={styles.childrenWrapper}>{children}</div>
