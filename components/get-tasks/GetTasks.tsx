@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Database } from "../app/utils/types/supabase";
+import { Database } from "../../app/utils/types/supabase";
 
 type Task = Database["public"]["Tables"]["tasks"]["Row"];
 interface Props {

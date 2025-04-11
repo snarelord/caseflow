@@ -1,5 +1,5 @@
-import { createClient } from "../app/utils/supabase/server";
-import { Database } from "../app/utils/types/supabase";
+import { createClient } from "../../app/utils/supabase/server";
+import { Database } from "../../app/utils/types/supabase";
 import GetTasks from "./GetTasks";
 
 type Task = Database["public"]["Tables"]["tasks"]["Row"];
