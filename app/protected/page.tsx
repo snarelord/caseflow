@@ -1,10 +1,8 @@
-import FetchDataSteps from "@/components/tutorial/fetch-data-steps";
-import { createClient } from "@/utils/supabase/server";
-import { InfoIcon } from "lucide-react";
+import { createClient } from "../utils/supabase/server";
 import { redirect } from "next/navigation";
-import styles from "./page.module.css";
-import GetTasks from "../tasks/GetTasks";
+import GetTasks from "../../components/GetTasksServer";
 import { AddTask } from "../tasks/actions";
+import styles from "./page.module.css";
 
 export default async function ProtectedPage() {
   const supabase = await createClient();
@@ -16,19 +14,6 @@ export default async function ProtectedPage() {
   if (!user) {
     return redirect("/sign-in");
   }
-
-  // fetch tasks and filter by status
-  const { data: tasks, error } = await supabase.from("tasks").select();
-
-  // console.log("tasks", tasks);
-
-  if (error) {
-    return <p>Error fetching tasks: {error.message}</p>;
-  }
-
-  const toDoTasks = tasks?.filter((task) => task.status === "To Do");
-  const inProgressTasks = tasks?.filter((task) => task.status === "In Progress");
-  const completedTasks = tasks?.filter((task) => task.status === "Done");
 
   return (
     <div className={styles.page}>
@@ -46,19 +31,19 @@ export default async function ProtectedPage() {
       <div className={styles.section}>
         <h2 className={styles.heading}>To Do</h2>
         <div className={styles.taskSection}>
-          <GetTasks tasks={toDoTasks} />
+          <GetTasks status="To Do" />
         </div>
       </div>
       <div className={styles.section}>
         <h2 className={styles.heading}>In Progress</h2>
         <div className={styles.taskSection}>
-          <GetTasks tasks={inProgressTasks} />
+          <GetTasks status="In Progress" />
         </div>
       </div>
       <div className={styles.section}>
         <h2 className={styles.heading}>Completed</h2>
         <div className={styles.taskSection}>
-          <GetTasks tasks={completedTasks} />
+          <GetTasks status="Done" />
         </div>
       </div>
       <div className={styles.section}>
