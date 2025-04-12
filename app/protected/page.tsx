@@ -2,6 +2,7 @@ import { createClient } from "../utils/supabase/server";
 import { redirect } from "next/navigation";
 import GetTasks from "../../components/get-tasks/GetTasksServer";
 import { AddTask } from "../tasks/actions";
+import AddTaskForm from "@/components/add-task/AddTask";
 import styles from "./page.module.css";
 
 export default async function ProtectedPage() {
@@ -17,17 +18,7 @@ export default async function ProtectedPage() {
 
   return (
     <div className={styles.page}>
-      <form action={AddTask} className={styles.taskForm}>
-        <input name="title" placeholder="Title" required />
-        <textarea name="description" placeholder="Description" />
-        <select name="status" required>
-          <option value="To Do">To Do</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Done">Done</option>
-        </select>
-        <input name="due_date" type="datetime-local" placeholder="Due date" required />
-        <button type="submit">Add Task</button>
-      </form>
+      <AddTaskForm />
       <div className={styles.section}>
         <h2 className={styles.heading}>To Do</h2>
         <div className={styles.taskSection}>
